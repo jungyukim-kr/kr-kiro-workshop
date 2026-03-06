@@ -164,3 +164,45 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Units Generation approved. CONSTRUCTION started with Unit 1.
 
 ---
+
+## CONSTRUCTION - Unit 2 Functional Design (Start - Parallel Development)
+**Timestamp**: 2026-03-06T13:45:00+09:00
+**User Input**: "지금 병렬개발을 시작했어. AI-DLC를 사용해서 유닛2 개발을 시작해줘"
+**AI Response**: Unit 2 (인증 모듈) Functional Design 시작. Unit 정의 및 스토리 매핑 분석 후 Functional Design Plan 생성 예정.
+**Context**: CONSTRUCTION Phase - Unit 2 parallel development initiated
+
+---
+## CONSTRUCTION - Unit 2 Functional Design (Plan Created)
+**Timestamp**: 2026-03-06T13:47:30+09:00
+**AI Response**: Unit 2 Functional Design Plan 생성 완료. 12개 질문 포함. 사용자 답변 대기 중.
+**Context**: Functional Design Plan created at aidlc-docs/construction/plans/unit-2-auth-functional-design-plan.md
+
+---
+## CONSTRUCTION - Unit 2 Functional Design (Answer Analysis)
+**Timestamp**: 2026-03-06T13:52:00+09:00
+**User Input**: "완료했어"
+**AI Response**: 12개 답변 분석 완료. 2개 모호/충돌 사항 발견: (1) Q7 세션 시작 시점이 기존 US-A07과 충돌, (2) Q8 구체적 에러 메시지의 보안 리스크. Clarification 질문 파일 생성.
+**Context**: Functional Design Plan answers analyzed. Clarification questions created at unit-2-auth-fd-clarification.md
+
+---
+## CONSTRUCTION - Unit 2 Functional Design (Clarification Answers)
+**Timestamp**: 2026-03-06T13:58:00+09:00
+**User Input**: "ㅇㅇ"
+**AI Response**: Clarification 답변 확인 - CQ1:B (기존 요구사항 유지, 첫 주문 시 세션 자동 생성), CQ2:B (보안 우선, 일반적 에러 메시지). 모든 모호성 해소 완료.
+**Context**: Clarification answers analyzed. No further ambiguities.
+
+---
+
+## CONSTRUCTION - Unit 2 Functional Design (Artifacts Generated)
+**Timestamp**: 2026-03-06T14:00:00+09:00
+**AI Response**: Functional Design 산출물 3개 생성 완료: domain-entities.md (인증 관점 엔티티 상세), business-rules.md (6개 규칙 카테고리, 인증/JWT/보안), business-logic-model.md (6개 플로우: 관리자 로그인, 테이블 로그인, JWT 검증, 비밀번호 변경, 토큰 유효성 확인, 메서드 요약). Plan 체크리스트 전체 완료 처리.
+**Context**: Unit 2 Functional Design artifacts generated. Awaiting user approval.
+
+---
+## CONSTRUCTION - Unit 2 Functional Design (Change Request - 계정 잠금 제거)
+**Timestamp**: 2026-03-06T14:05:00+09:00
+**User Input**: "계정잠금 기능은 필요없을것 같아."
+**AI Response**: 계정 잠금 기능 전체 제거. 변경된 파일: (1) domain-entities.md - login_attempts, locked_until 속성 제거, (2) business-rules.md - BR-AUTH-01.2 로그인 시도 제한 규칙 단순화, 계정 잠금 에러 응답 제거, (3) business-logic-model.md - 관리자 로그인 플로우에서 잠금 확인/횟수 증가 단계 제거, (4) Unit 1 domain-entities.md - Admin 테이블에서 login_attempts, locked_until 컬럼 제거.
+**Context**: Functional Design change request applied. Account locking feature removed entirely.
+
+---

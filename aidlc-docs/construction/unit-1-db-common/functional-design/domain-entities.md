@@ -44,8 +44,6 @@
 | store_id | BIGINT | FK(Store), NOT NULL | 매장 ID |
 | username | VARCHAR(50) | NOT NULL | 사용자명 |
 | password_hash | VARCHAR(255) | NOT NULL | bcrypt 해시 |
-| login_attempts | INT | DEFAULT 0 | 로그인 시도 횟수 |
-| locked_until | TIMESTAMP | NULLABLE | 잠금 해제 시각 |
 | created_at | TIMESTAMP | NOT NULL | 생성일시 |
 | | | UNIQUE(store_id, username) | |
 
