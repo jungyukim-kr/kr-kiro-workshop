@@ -164,7 +164,6 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Units Generation approved. CONSTRUCTION started with Unit 1.
 
 ---
-
 ## CONSTRUCTION - Unit 2 Functional Design (Start - Parallel Development)
 **Timestamp**: 2026-03-06T13:45:00+09:00
 **User Input**: "지금 병렬개발을 시작했어. AI-DLC를 사용해서 유닛2 개발을 시작해줘"
@@ -192,11 +191,17 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Clarification answers analyzed. No further ambiguities.
 
 ---
-
 ## CONSTRUCTION - Unit 2 Functional Design (Artifacts Generated)
 **Timestamp**: 2026-03-06T14:00:00+09:00
 **AI Response**: Functional Design 산출물 3개 생성 완료: domain-entities.md (인증 관점 엔티티 상세), business-rules.md (6개 규칙 카테고리, 인증/JWT/보안), business-logic-model.md (6개 플로우: 관리자 로그인, 테이블 로그인, JWT 검증, 비밀번호 변경, 토큰 유효성 확인, 메서드 요약). Plan 체크리스트 전체 완료 처리.
 **Context**: Unit 2 Functional Design artifacts generated. Awaiting user approval.
+
+---
+## CONSTRUCTION - Unit 1 Functional Design (Approval) + NFR Requirements
+**Timestamp**: 2026-03-06T14:00:38+09:00
+**User Input**: "좋아. 진행시켜."
+**AI Response**: FK 유지 확정. Unit 1 Functional Design 승인. NFR Requirements 산출물 생성: nfr-requirements.md, tech-stack-decisions.md.
+**Context**: FK 토론 후 FK 유지 결정. Unit 1 NFR Requirements 완료.
 
 ---
 ## CONSTRUCTION - Unit 2 Functional Design (Change Request - 계정 잠금 제거)
@@ -204,5 +209,26 @@ AI-DLC 워크플로우를 시작해봅시다."
 **User Input**: "계정잠금 기능은 필요없을것 같아."
 **AI Response**: 계정 잠금 기능 전체 제거. 변경된 파일: (1) domain-entities.md - login_attempts, locked_until 속성 제거, (2) business-rules.md - BR-AUTH-01.2 로그인 시도 제한 규칙 단순화, 계정 잠금 에러 응답 제거, (3) business-logic-model.md - 관리자 로그인 플로우에서 잠금 확인/횟수 증가 단계 제거, (4) Unit 1 domain-entities.md - Admin 테이블에서 login_attempts, locked_until 컬럼 제거.
 **Context**: Functional Design change request applied. Account locking feature removed entirely.
+
+---
+## CONSTRUCTION - Unit 1 NFR Requirements (Approval) → NFR Design
+**Timestamp**: 2026-03-06T14:05:42+09:00
+**User Input**: "다음 단계로 넘어가자."
+**AI Response**: NFR Requirements 승인. NFR Design 산출물 생성: nfr-design-patterns.md, logical-components.md.
+**Context**: Unit 1 NFR Design 완료. 패턴: FK+App Validation, Snapshot, bcrypt, JWT Stateless, Schema-First Init.
+
+---
+## CONSTRUCTION - Unit 1 NFR Design (Approval) → Infrastructure Design
+**Timestamp**: 2026-03-06T14:17:31+09:00
+**User Input**: "응"
+**AI Response**: NFR Design 승인. 개발 환경 세팅 (Homebrew, JDK 17, Docker Desktop 설치 완료). Infrastructure Design 산출물 생성.
+**Context**: Unit 1 Infrastructure Design 완료. Docker Compose (app:8080 + db:5432).
+
+---
+## CONSTRUCTION - Unit 1 Infrastructure Design (Approval) → Code Generation
+**Timestamp**: 2026-03-06T14:24:59+09:00
+**User Input**: "b"
+**AI Response**: Standard 방식 선택. Unit 1 코드 생성 완료: build.gradle, application.yml, schema.sql, data.sql, 10개 JPA 엔티티, SecurityConfig, WebConfig, docker-compose.yml, Dockerfile. Gradle 빌드 성공, Docker Compose 기동 성공, DB 시드 데이터 확인.
+**Context**: Unit 1 Code Generation 완료. 개발 환경에 Gradle도 추가 설치.
 
 ---
