@@ -36,6 +36,4 @@ public class Admin {
     public void setLastTokenIssuedAt(LocalDateTime lastTokenIssuedAt) { this.lastTokenIssuedAt = lastTokenIssuedAt; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
-    public LocalDateTime getLastTokenIssuedAt() { return lastTokenIssuedAt; }
-    public void setLastTokenIssuedAt(LocalDateTime lastTokenIssuedAt) { this.lastTokenIssuedAt = lastTokenIssuedAt; }
 }

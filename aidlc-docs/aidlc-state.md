@@ -55,14 +55,24 @@
   - [x] Plan Step 5: Documentation + Final Verification
   - Total: 32 TC ALL PASSED, Gradle BUILD SUCCESSFUL
 
-#### Build and Test
-- [x] Build and Test (COMPLETED)
+#### Unit 3: Customer Backend (unit-3-customer-be)
+- [x] Functional Design (COMPLETED)
+- [x] NFR Requirements (COMPLETED)
+- [x] NFR Design (COMPLETED)
+- [x] Infrastructure Design (COMPLETED)
+- [x] Code Generation - TDD (COMPLETED)
+  - [x] Plan Step 0: Contract Skeleton + DTO + Exception + Repository
+  - [x] Plan Step 1: CustomerMenuService TDD (7 TC PASSED)
+  - [x] Plan Step 2: CustomerOrderService TDD (10 TC PASSED)
+  - [x] Plan Step 3: Controller Layer TDD (8 TC PASSED)
+  - [x] Plan Step 4: Documentation + Final Verification
+  - Total: 25 TC ALL PASSED, Gradle BUILD SUCCESSFUL
 
 ### 🟡 OPERATIONS PHASE
 - [ ] Operations - PLACEHOLDER
 
 ## Current Status
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: Build and Test Complete
-- **Next Stage**: Operations (Placeholder)
-- **Status**: Unit 1, Unit 2 빌드 및 테스트 완료. Operations 단계 진행 대기
+- **Current Stage**: Unit 3 Code Generation Complete (TDD)
+- **Next Stage**: Unit 5 (Admin BE) Functional Design
+- **Status**: Unit 1, Unit 2, Unit 3 코드 생성 완료. Unit 5 진행 대기

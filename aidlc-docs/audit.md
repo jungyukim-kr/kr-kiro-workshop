@@ -426,3 +426,34 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Ad-hoc request - Unit 3 API specification document created before Code Generation.
 
 ---
+
+## CONSTRUCTION - Unit 3 Code Generation (TDD Selection)
+**Timestamp**: 2026-03-06T16:26:45+09:00
+**User Input**: "시작!"
+**AI Response**: TDD 선택 질문 제시.
+**Context**: Unit 3 Code Generation 시작. TDD 선택 프롬프트 표시.
+
+---
+
+## CONSTRUCTION - Unit 3 Code Generation (TDD Selection Answer)
+**Timestamp**: 2026-03-06T16:27:27+09:00
+**User Input**: "A"
+**AI Response**: TDD 방식 선택 확인. TDD Planning (Part 1) 시작. 3개 문서 생성: (1) unit-3-customer-be-contracts.md, (2) unit-3-customer-be-test-plan.md (25개 TC), (3) unit-3-customer-be-tdd-code-generation-plan.md (5개 Plan Step). 사용자 승인 대기 중.
+**Context**: TDD Planning Part 1 complete. Awaiting user approval.
+
+---
+
+## CONSTRUCTION - Unit 3 TDD Code Generation (Plan Approval)
+**Timestamp**: 2026-03-06T16:35:43+09:00
+**User Input**: "진행해줘"
+**AI Response**: TDD Plan 승인 확인. Part 2 Generation 시작. Plan Step 0부터 실행.
+**Context**: TDD Planning approved. Proceeding to TDD Generation Part 2.
+
+---
+
+## CONSTRUCTION - Unit 3 TDD Code Generation (Step 0-4 Complete)
+**Timestamp**: 2026-03-06T16:42:00+09:00
+**AI Response**: Plan Step 0~4 완료. Step 0: Skeleton + DTO + Exception + Repository + SSE Interface 생성, Admin.java 중복 getter 수정. Step 1: CustomerMenuService TDD (7 TC PASSED). Step 2: CustomerOrderService TDD (10 TC PASSED). Step 3: Controller Layer TDD (8 TC PASSED). Step 4: Documentation + aidlc-state 업데이트. 전체 테스트 57개 (Unit 2: 32 + Unit 3: 25) ALL PASSED.
+**Context**: TDD Generation Steps 0-4 complete. Unit 3 Code Generation fully complete.
+
+---
