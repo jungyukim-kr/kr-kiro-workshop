@@ -280,3 +280,10 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Infrastructure Design artifacts generated. Awaiting user approval.
 
 ---
+## Team Assignment Change
+**Timestamp**: 2026-03-06T15:04:59Z
+**User Input**: "개발 진행상황을 보니까, 우리가 1, 3, 5를 진행하고, 옆 팀에서 2, 4, 6을 진행해야 할 것 같아. 계획을 수정해줘. 그 이후에 옆 팀의 결과물을 pull할거야."
+**AI Response**: 팀 분담 변경. 우리 팀: Unit 1(완료), 3, 5 / 다른 팀: Unit 2, 4, 6.
+**Context**: 백엔드(우리) / 프론트엔드+Auth(다른팀) 분담으로 변경.
+
+---

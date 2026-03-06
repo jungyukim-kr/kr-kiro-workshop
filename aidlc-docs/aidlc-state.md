@@ -3,7 +3,9 @@
 ## Project Information
 - **Project Type**: Greenfield
 - **Start Date**: 2026-03-06T10:40:12+09:00
-- **Current Stage**: CONSTRUCTION - Unit 1 Functional Design
+- **Current Stage**: CONSTRUCTION - Unit 1 Complete, Unit 5 대기 (Unit 2 의존)
+- **Our Team**: Unit 1 (DB/공통), Unit 3 (Customer BE), Unit 5 (Admin BE)
+- **Other Team**: Unit 2 (Auth), Unit 4 (Customer FE), Unit 6 (Admin FE)
 
 ## Workspace State
 - **Existing Code**: No
