@@ -44,6 +44,7 @@ public class SecurityConfig {
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 .accessDeniedHandler(new CustomAccessDeniedHandler()))
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/customer/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/auth/admin/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/auth/table/login").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/api/auth/admin/password").hasRole("ADMIN")

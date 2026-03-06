@@ -68,11 +68,27 @@
   - [x] Plan Step 4: Documentation + Final Verification
   - Total: 25 TC ALL PASSED, Gradle BUILD SUCCESSFUL
 
+#### Unit 4: 고객 프론트엔드 (unit-4-customer-fe)
+- [x] Functional Design (COMPLETED)
+- [x] NFR Requirements (COMPLETED)
+- [x] NFR Design (COMPLETED)
+- [x] Infrastructure Design (COMPLETED)
+- [x] Code Generation - TDD (COMPLETED)
+  - [x] Plan Step 0: 프로젝트 구조 + Contract Skeleton
+  - [x] Plan Step 1: Cart TDD (9 TC)
+  - [x] Plan Step 2: API + Auth TDD (8 TC)
+  - [x] Plan Step 3: UI 모듈 구현 (Menu, Order, OrderHistory, App)
+  - [x] Plan Step 4: 통합 + Security 설정 + 문서화
+  - Total: 20 TC, 브라우저 기반 테스트
+
+#### Build and Test
+- [x] Build and Test (COMPLETED) - Unit 1, Unit 2
+
 ### 🟡 OPERATIONS PHASE
 - [ ] Operations - PLACEHOLDER
 
 ## Current Status
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: Unit 3 Code Generation Complete (TDD)
-- **Next Stage**: Unit 5 (Admin BE) Functional Design
-- **Status**: Unit 1, Unit 2, Unit 3 코드 생성 완료. Unit 5 진행 대기
+- **Current Stage**: Unit 3, Unit 4 Code Generation Complete
+- **Next Stage**: Build and Test (Unit 3, Unit 4 포함 업데이트)
+- **Status**: Unit 1~4 코드 생성 완료. Unit 3 (25 TC, Gradle BUILD SUCCESSFUL), Unit 4 (20 TC, 브라우저 기반). Spring Security `/customer/**` permitAll 추가. 배포 파일 복사 완료.

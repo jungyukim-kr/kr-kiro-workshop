@@ -1,0 +1,101 @@
+/* 테이블오더 고객 - 커스텀 스타일 */
+
+body {
+    background-color: #f8f9fa;
+    padding-bottom: 80px;
+}
+
+/* 카테고리 탭 */
+#category-tabs {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+#category-tabs::-webkit-scrollbar {
+    display: none;
+}
+#category-tabs .nav-link {
+    white-space: nowrap;
+    margin-right: 0.5rem;
+}
+
+/* 메뉴 카드 */
+.menu-card {
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+.menu-card:hover {
+    transform: translateY(-2px);
+}
+.menu-card .card-img-top {
+    height: 140px;
+    object-fit: cover;
+    background-color: #e9ecef;
+}
+.menu-card .card-img-placeholder {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9ecef;
+    color: #adb5bd;
+    font-size: 2rem;
+}
+.menu-card .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.menu-card .qty-controls .btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 장바구니 사이드 패널 */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+.cart-item .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* 주문 확인 */
+.order-item-card {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* 주문 내역 */
+.order-history-card {
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+}
+
+/* 상태 뱃지 */
+.badge-waiting { background-color: #ffc107; color: #000; }
+.badge-preparing { background-color: #0d6efd; }
+.badge-done { background-color: #198754; }
+
+/* 토스트 */
+.toast {
+    min-width: 250px;
+}
+
+/* 반응형 */
+@media (max-width: 576px) {
+    .menu-card .card-img-top,
+    .menu-card .card-img-placeholder {
+        height: 100px;
+    }
+}
