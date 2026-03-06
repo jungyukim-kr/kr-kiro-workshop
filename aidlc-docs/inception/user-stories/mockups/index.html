@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>테이블오더 - User Story 샘플 화면</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#f5f5f5;color:#333}
+.container{max-width:800px;margin:0 auto;padding:20px}
+h1{text-align:center;margin-bottom:30px;color:#1a1a2e}
+h2{margin:20px 0 10px;color:#16213e}
+.card{background:#fff;border-radius:12px;padding:16px 20px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.1);display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#333;transition:transform .1s}
+.card:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(0,0,0,.15)}
+.card .title{font-weight:600;font-size:15px}
+.card .desc{font-size:13px;color:#666;margin-top:4px}
+.card .priority{font-size:12px;padding:4px 10px;border-radius:20px;font-weight:600}
+.must{background:#ffe0e0;color:#c0392b}
+.should{background:#fff3cd;color:#856404}
+.could{background:#d4edda;color:#155724}
+.section{margin-bottom:24px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🍽️ 테이블오더 서비스<br><small style="font-size:16px;color:#666">User Story 샘플 화면 목록</small></h1>
+
+<div class="section">
+<h2>👤 고객 스토리 (Customer)</h2>
+<a class="card" href="customer.html#us-c01"><div><div class="title">US-C01: 테이블 자동 로그인</div><div class="desc">별도 로그인 없이 바로 주문 화면 진입</div></div><span class="priority must">Must</span></a>
+<a class="card" href="customer.html#us-c02"><div><div class="title">US-C02: 메뉴 카테고리별 조회</div><div class="desc">카테고리별 메뉴 탐색, 맵기 수준 표시</div></div><span class="priority must">Must</span></a>
+<a class="card" href="customer.html#us-c03"><div><div class="title">US-C03: 장바구니에 메뉴 추가</div><div class="desc">메뉴를 장바구니에 담기</div></div><span class="priority must">Must</span></a>
+<a class="card" href="customer.html#us-c04"><div><div class="title">US-C04: 장바구니 수정</div><div class="desc">수량 조절, 삭제, 비우기</div></div><span class="priority must">Must</span></a>
+<a class="card" href="customer.html#us-c05"><div><div class="title">US-C05: 주문 생성</div><div class="desc">주문 확정, 요청사항, 맵기 옵션</div></div><span class="priority must">Must</span></a>
+<a class="card" href="customer.html#us-c06"><div><div class="title">US-C06: 주문 내역 조회</div><div class="desc">현재 세션 주문 내역 확인</div></div><span class="priority must">Must</span></a>
+<a class="card" href="customer.html#us-c07"><div><div class="title">US-C07: 주문 상태 확인</div><div class="desc">대기중/준비중/완료 상태 확인</div></div><span class="priority should">Should</span></a>
+<a class="card" href="customer.html#us-c08"><div><div class="title">US-C08: 주문 내역 페이지네이션</div><div class="desc">주문 목록 스크롤 로드</div></div><span class="priority should">Should</span></a>
+</div>
+
+<div class="section">
+<h2>🔧 관리자 스토리 (Admin)</h2>
+<a class="card" href="admin.html#us-a01"><div><div class="title">US-A01: 관리자 로그인</div><div class="desc">매장 관리 시스템 인증</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a02"><div><div class="title">US-A02: 실시간 주문 모니터링</div><div class="desc">테이블별 그리드 대시보드, SSE</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a03"><div><div class="title">US-A03: 주문 상태 변경</div><div class="desc">대기중→준비중→완료</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a04"><div><div class="title">US-A04: 테이블별 필터링</div><div class="desc">특정 테이블 주문 필터</div></div><span class="priority should">Should</span></a>
+<a class="card" href="admin.html#us-a05"><div><div class="title">US-A05: 테이블 태블릿 초기 설정</div><div class="desc">테이블 번호/비밀번호 설정</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a06"><div><div class="title">US-A06: 주문 삭제</div><div class="desc">잘못된 주문 삭제</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a07"><div><div class="title">US-A07: 테이블 세션 시작</div><div class="desc">첫 주문 시 자동 세션 시작</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a08"><div><div class="title">US-A08: 테이블 이용 완료</div><div class="desc">세션 종료, 이력 이동</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a09"><div><div class="title">US-A09: 과거 주문 내역 조회</div><div class="desc">테이블별 과거 이력</div></div><span class="priority must">Must</span></a>
+<a class="card" href="admin.html#us-a10"><div><div class="title">US-A10: 메뉴 관리</div><div class="desc">메뉴 CRUD, 맵기 설정</div></div><span class="priority could">Could</span></a>
+<a class="card" href="admin.html#us-a11"><div><div class="title">US-A11: 메뉴 노출 순서 조정</div><div class="desc">드래그로 순서 변경</div></div><span class="priority could">Could</span></a>
+</div>
+</div>
+</body>
+</html>

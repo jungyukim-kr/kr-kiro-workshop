@@ -1,0 +1,166 @@
+# AI-DLC Audit Log
+
+## Initial User Request
+**Timestamp**: 2026-03-06T10:40:12+09:00
+**User Input**: "테이블오더 서비스를 구축하고 싶습니다. 다음 파일들에서 요구사항을 읽어주세요:
+- requirements/table-order-requirements.md
+- requirements/constraints.md
+
+AI-DLC 워크플로우를 시작해봅시다."
+**AI Response**: Welcome message 표시, Workspace Detection 실행
+**Context**: Workflow start, initial request logging
+
+---
+
+## INCEPTION - Workspace Detection
+**Timestamp**: 2026-03-06T10:40:12+09:00
+**AI Response**: Greenfield project 감지. 기존 소스 코드 없음. Requirements Analysis로 진행 결정.
+**Context**: Workspace Detection completed - no existing code found, greenfield project
+
+---
+## INCEPTION - Requirements Analysis (Start)
+**Timestamp**: 2026-03-06T10:40:30+09:00
+**AI Response**: 요구사항 문서 분석 완료. Intent Analysis 수행: New Project, System-wide scope, Complex complexity. 10개의 clarifying questions 생성하여 requirement-verification-questions.md에 저장.
+**Context**: Requirements Analysis Step 2-6 executed. Awaiting user answers.
+
+---
+## INCEPTION - Requirements Analysis (User Answers)
+**Timestamp**: 2026-03-06T10:52:07+09:00
+**User Input**: "답변 다 달았어ㅓ."
+**AI Response**: 답변 확인 - Q1:C(Spring Boot), Q2:D(Vanilla JS), Q3:A(PostgreSQL), Q4:B(Docker Compose), Q5:A(단일 앱 라우팅), Q6:A(외부 URL), Q7:B(다중 매장), Q8:A(시드 데이터), Q9:A(모노레포), Q10:A(localStorage). 모순 없음. requirements.md 생성 완료.
+**Context**: Requirements Analysis Steps 7-9 executed. Requirements document generated.
+
+---
+## INCEPTION - Requirements Analysis (Review & Update)
+**Timestamp**: 2026-03-06T11:05:48+09:00
+**User Input**: "누락된 항목의 #1을 제외하고는 반영해줘."
+**AI Response**: 서비스 비전(#1) 제외, 나머지 누락 항목 10건 + 표현 약화 4건 모두 requirements.md에 반영 완료. 반영 내용: 주문 상태 실시간 업데이트(선택사항), 페이지네이션, 테이블별 필터링, 세션 시작 조건, 완료 시각, OrderHistory, 확인 팝업/피드백, 축약 표시, 닫기 버튼, CMS/광고 제외, MVP 범위 구분(메뉴 관리는 MVP 외).
+**Context**: Requirements document updated with missing items
+
+---
+## INCEPTION - Requirements Analysis (Approval)
+**Timestamp**: 2026-03-06T11:11:53+09:00
+**User Input**: "승인합니다."
+**AI Response**: 요구사항 승인 확인. User Stories 단계로 진행. Assessment 수행 후 Story Generation Plan 생성.
+**Context**: Requirements Analysis approved. Proceeding to User Stories.
+
+---
+
+## INCEPTION - User Stories (Start)
+**Timestamp**: 2026-03-06T11:11:53+09:00
+**AI Response**: User Stories Assessment 완료 (Execute: Yes). Story Generation Plan 생성 완료. 3개 질문 포함. 사용자 답변 대기 중.
+**Context**: User Stories Part 1 - Planning. Assessment and plan created.
+
+---
+## INCEPTION - User Stories (User Answers - Round 1)
+**Timestamp**: 2026-03-06T11:15:46+09:00
+**User Input**: "답 달았어."
+**AI Response**: Q1:C(Persona-Based), Q2:추가 설명 요청 ("이건 내가 무슨 차이인지 잘 모르겠는데 선택을 도와줄 수 있어??"), Q3:A(우선순위 포함). Q2에 대해 clarification 파일 생성 (간결 vs Given/When/Then 예시 포함).
+**Context**: User Stories Part 1 - Ambiguity detected in Q2. Clarification requested.
+
+---
+## INCEPTION - User Stories (User Answers - Round 1)
+**Timestamp**: 2026-03-06T11:15:46+09:00
+**User Input**: "답 달았어."
+**AI Response**: Q1:C(Persona-Based), Q2:추가 설명 요청, Q3:A(우선순위 포함). Q2에 대해 clarification 파일 생성.
+**Context**: User Stories Part 1 - Ambiguity detected in Q2. Clarification requested.
+
+---
+## INCEPTION - User Stories (Clarification Answer)
+**Timestamp**: 2026-03-06T11:20:45+09:00
+**User Input**: "입력했어."
+**AI Response**: Clarification Q1: B (Given/When/Then). 최종 답변 - Q1:C(Persona-Based), Q2:B(Given/When/Then), Q3:A(우선순위 포함). 모순 없음. Part 2 Generation 실행: personas.md (2 페르소나), stories.md (19 스토리: 고객 8 + 관리자 11) 생성 완료.
+**Context**: User Stories Part 2 - Generation completed. All plan steps marked [x].
+
+---
+## INCEPTION - User Stories (Change Request)
+**Timestamp**: 2026-03-06T11:31:08+09:00
+**User Input**: "고객이 주문할 때 요청사항을 입력 또는 선택 할 수 있으면 좋겠어. 내가 맴찔이인데 테이블 오더로 바뀌면서 청양고추 빼달라는 말을 못해서 늘 직원호출 눌러서 따로 말씀드렸거든."
+**AI Response**: 메뉴별 요청사항 입력 기능 추가. requirements.md FR-1.4에 반영, stories.md US-C05에 Scenario 4,5 추가, US-A02에 요청사항 표시 추가.
+**Context**: User Stories - Change request applied. New feature: per-menu special request text input.
+
+---
+## INCEPTION - User Stories (Change Request - 맵기 기능)
+**Timestamp**: 2026-03-06T11:36:18+09:00
+**User Input**: "미안한데, 생각해보니까 고객이 매번 청양고추 빼주세요를 누르는 방법이 있지만 애초에 메뉴를 고를 때 이 메뉴가 어느정도의 맵기인지 볼 수 있으면 좋겠고(메뉴를 등록할 때 입력되어야 하겠지만) 그리고 매장에서 제공할 수 있는 맵기 옵션을 선택하면 더욱 간단할 것 같아. (물론 이것도 매장에서 메뉴 등록할 때 메뉴별 맵기 옵션을 골라두어야겠지). 그런다고 해서 청양고추 빼기를 없애버리지는 말자."
+**AI Response**: 3가지 기능 추가: (1) 메뉴 맵기 수준 표시 (FR-1.2, US-C02), (2) 주문 시 맵기 옵션 선택 (FR-1.4, US-C05), (3) 관리자 메뉴 등록 시 맵기 수준/옵션 설정 (FR-2.4, US-A10). 기존 자유 텍스트 요청사항 유지.
+**Context**: User Stories - Change request applied. Spiciness level display + spiciness option selection + admin menu spiciness settings.
+
+---
+## INCEPTION - User Stories (Change Request - 수량 감소)
+**Timestamp**: 2026-03-06T11:46:02+09:00
+**User Input**: "[US-C04] Given 장바구니에서 수량이 1개인 항목이 있을 대, when 수량 감소 버튼을 누르면 Then 수량이 0이 되므로 메뉴가 장바구니에서 사라진다."
+**AI Response**: US-C04에 Scenario 3 (수량 1에서 감소 시 메뉴 제거) 추가. 기존 시나리오 번호 재정렬.
+**Context**: User Stories - Edge case scenario added.
+
+---
+## INCEPTION - User Stories (Mockup 생성)
+**Timestamp**: 2026-03-06T12:57:52+09:00
+**User Input**: "글로만 보니까 잘 이해가 안되는데, 각 유저스토리 단위로 샘플 화면을 볼 수 있으면 좋겠어. HTML로 만들어줘."
+**AI Response**: 3개 HTML 파일 생성 - index.html (목록), customer.html (고객 8화면), admin.html (관리자 11화면). mockups/ 디렉토리에 저장.
+**Context**: User Stories - Mockup HTML screens created for all 19 stories.
+
+---
+## INCEPTION - User Stories (Approval)
+**Timestamp**: 2026-03-06T13:08:01+09:00
+**User Input**: "응"
+**AI Response**: User Stories 승인 확인. Workflow Planning 단계로 진행.
+**Context**: User Stories approved. Proceeding to Workflow Planning.
+
+---
+
+## INCEPTION - Workflow Planning
+**Timestamp**: 2026-03-06T13:08:01+09:00
+**AI Response**: Execution plan 생성 완료. 실행 단계: Application Design, Units Generation, Functional Design(per-unit), NFR Requirements(per-unit), Infrastructure Design(per-unit), Code Generation(per-unit), Build and Test. 스킵: NFR Design. 사용자 승인 대기 중.
+**Context**: Workflow Planning completed. Execution plan created.
+
+---
+## INCEPTION - Workflow Planning (Change Request)
+**Timestamp**: 2026-03-06T13:10:24+09:00
+**User Input**: "Add Skipped Stages"
+**AI Response**: NFR Design을 SKIP에서 EXECUTE로 변경. execution-plan.md, aidlc-state.md 업데이트 완료.
+**Context**: Workflow Planning - User requested to include NFR Design stage.
+
+---
+## INCEPTION - Workflow Planning (Approval)
+**Timestamp**: 2026-03-06T13:14:13+09:00
+**User Input**: "오키오키"
+**AI Response**: 실행 계획 승인 확인. Application Design 단계로 진행.
+**Context**: Workflow Planning approved. Proceeding to Application Design.
+
+---
+
+## INCEPTION - Application Design
+**Timestamp**: 2026-03-06T13:14:13+09:00
+**AI Response**: Application Design 산출물 4개 생성 완료: components.md (9개 컴포넌트), component-methods.md (메서드 시그니처), services.md (3개 서비스), component-dependency.md (의존성 매트릭스). 사용자 승인 대기 중.
+**Context**: Application Design completed. 4 artifacts generated.
+
+---
+## INCEPTION - Application Design (Approval)
+**Timestamp**: 2026-03-06T13:26:54+09:00
+**User Input**: "오케이!"
+**AI Response**: Application Design 승인 확인. Units Generation 진행.
+**Context**: Application Design approved.
+
+---
+
+## INCEPTION - Units Generation
+**Timestamp**: 2026-03-06T13:26:54+09:00
+**AI Response**: 7개 Unit 정의 완료. unit-of-work.md (정의+프로젝트 구조), unit-of-work-dependency.md (의존성+구현 순서), unit-of-work-story-map.md (19개 스토리 전체 매핑). 구현 순서: DB/설정→인증→메뉴→주문/테이블→SSE→고객UI→관리자UI.
+**Context**: Units Generation completed. 7 units defined, all 19 stories mapped.
+
+---
+## INCEPTION - Units Generation (Change Request - 팀 분리)
+**Timestamp**: 2026-03-06T13:34:42+09:00
+**User Input**: "우리는 관리자 기능과 사용자 기능을 각 팀에서 개발할 예정이야. Backend도 Frontend와 같이 구분해서 다시 생성해줘."
+**AI Response**: 7개 Unit → 6개 Unit으로 재구성. 고객팀(Unit 3 고객BE + Unit 4 고객FE), 관리자팀(Unit 5 관리자BE + Unit 6 관리자FE), 공통(Unit 1 DB/설정 + Unit 2 인증). 백엔드 패키지도 customer/admin으로 분리. Unit 1,2 완료 후 양 팀 병렬 진행 가능.
+**Context**: Units Generation - Restructured for team-based development.
+
+---
+## INCEPTION - Units Generation (Approval)
+**Timestamp**: 2026-03-06T13:37:08+09:00
+**User Input**: "진행시켜"
+**AI Response**: Units Generation 승인. CONSTRUCTION PHASE 진입. Unit 1 Functional Design 생성 완료: domain-entities.md (10개 엔티티), business-rules.md, business-logic-model.md.
+**Context**: Units Generation approved. CONSTRUCTION started with Unit 1.
+
+---

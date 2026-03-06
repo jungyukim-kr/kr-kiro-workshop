@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 화면 - 테이블오더 샘플</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#f0f0f0;color:#333}
+.nav{position:fixed;top:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;z-index:100}
+.nav a{color:#aaa;text-decoration:none;font-size:13px}
+.nav a:hover{color:#fff}
+.story-nav{position:fixed;top:44px;left:0;right:0;background:#16213e;padding:8px 16px;overflow-x:auto;white-space:nowrap;z-index:99}
+.story-nav a{color:#8899aa;text-decoration:none;font-size:12px;padding:4px 10px;border-radius:16px;display:inline-block;margin-right:4px}
+.story-nav a:hover,.story-nav a.active{background:#0f3460;color:#fff}
+.content{margin-top:100px;padding:16px;max-width:700px;margin-left:auto;margin-right:auto}
+.screen{display:none;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+.screen.active{display:block}
+.screen-header{background:#0f3460;color:#fff;padding:16px;text-align:center}
+.screen-header h2{font-size:18px}
+.screen-header p{font-size:12px;opacity:.8;margin-top:4px}
+.screen-body{padding:16px}
+.story-id{font-size:11px;background:#cce5ff;color:#004085;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:8px}
+.story-id.should{background:#fff3cd;color:#856404}
+.story-id.could{background:#d4edda;color:#155724}
+.btn{display:block;width:100%;padding:12px;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;margin-top:12px;min-height:44px}
+.btn-primary{background:#0f3460;color:#fff}
+.btn-danger{background:#c0392b;color:#fff}
+.btn-secondary{background:#eee;color:#333}
+.btn-sm{display:inline-block;width:auto;padding:6px 14px;font-size:12px;margin:4px;border-radius:6px;min-height:44px;min-width:44px}
+.btn-success{background:#28a745;color:#fff}
+.btn-warning{background:#ffc107;color:#333}
+
+/* Login */
+.login-form label{display:block;font-size:13px;color:#666;margin-bottom:4px;margin-top:12px}
+.login-form input{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+
+/* Dashboard Grid */
+.table-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.table-card{border:1px solid #eee;border-radius:12px;padding:12px;position:relative}
+.table-card.has-new{border-color:#ffc107;animation:pulse 1s ease-in-out 3}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,193,7,.4)}50%{box-shadow:0 0 0 8px rgba(255,193,7,0)}}
+.table-num{font-size:18px;font-weight:700}
+.table-total{font-size:14px;color:#0f3460;font-weight:600;margin-top:4px}
+.table-orders{margin-top:8px;font-size:12px;color:#666}
+.table-orders .order-line{padding:3px 0;border-bottom:1px solid #f5f5f5}
+.new-badge{position:absolute;top:8px;right:8px;background:#ffc107;color:#333;font-size:10px;padding:2px 6px;border-radius:8px;font-weight:600}
+.status-btn{font-size:11px;padding:4px 10px;border:none;border-radius:12px;cursor:pointer;min-height:32px}
+.status-waiting{background:#fff3cd;color:#856404}
+.status-preparing{background:#cce5ff;color:#004085}
+.status-done{background:#d4edda;color:#155724}
+
+/* Filter */
+.filter-bar{display:flex;gap:8px;margin-bottom:12px;align-items:center}
+.filter-bar select{padding:8px;border:1px solid #ddd;border-radius:8px;font-size:13px}
+.filter-bar label{font-size:13px;color:#666}
+
+/* Order Detail Modal */
+.modal{background:#f8f8f8;border-radius:12px;padding:16px;margin-top:12px}
+.modal h3{font-size:15px;margin-bottom:8px}
+.modal .detail-item{padding:6px 0;border-bottom:1px solid #eee;font-size:13px}
+.modal .detail-item .note{font-size:11px;color:#e94560;margin-top:2px}
+.modal .detail-item .spicy{font-size:11px;color:#856404;margin-top:2px}
+
+/* Table Setup */
+.setup-form label{display:block;font-size:13px;color:#666;margin-bottom:4px;margin-top:12px}
+.setup-form input{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+
+/* Confirm Popup */
+.popup{background:#fff;border:2px solid #c0392b;border-radius:12px;padding:20px;text-align:center;margin:12px 0}
+.popup h3{font-size:16px;margin-bottom:8px}
+.popup p{font-size:13px;color:#666;margin-bottom:16px}
+.popup-actions{display:flex;gap:8px;justify-content:center}
+
+/* History */
+.history-item{padding:10px;border:1px solid #eee;border-radius:8px;margin-bottom:8px;font-size:13px}
+.history-item .h-header{display:flex;justify-content:space-between;margin-bottom:4px}
+.history-item .h-time{color:#999;font-size:12px}
+.date-filter{display:flex;gap:8px;margin-bottom:12px;align-items:center}
+.date-filter input{padding:6px;border:1px solid #ddd;border-radius:6px;font-size:12px}
+.date-filter label{font-size:12px;color:#666}
+
+/* Menu Mgmt */
+.menu-form label{display:block;font-size:13px;color:#666;margin-bottom:4px;margin-top:10px}
+.menu-form input,.menu-form select,.menu-form textarea{width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;font-size:13px}
+.menu-list-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid #eee;border-radius:8px;margin-bottom:8px}
+.drag-handle{cursor:grab;font-size:18px;color:#999;margin-right:8px}
+
+.feedback{padding:10px;border-radius:8px;text-align:center;font-size:13px;margin-top:8px}
+.feedback-success{background:#d4edda;color:#155724}
+.feedback-error{background:#f8d7da;color:#721c24}
+</style>
+</head>
+<body>
+<div class="nav">
+<a href="index.html">← 목록으로</a>
+<span style="font-size:14px;font-weight:600">🔧 관리자 화면</span>
+<span></span>
+</div>
+<div class="story-nav">
+<a href="#us-a01">A01 로그인</a>
+<a href="#us-a02">A02 모니터링</a>
+<a href="#us-a03">A03 상태변경</a>
+<a href="#us-a04">A04 필터</a>
+<a href="#us-a05">A05 초기설정</a>
+<a href="#us-a06">A06 주문삭제</a>
+<a href="#us-a07">A07 세션시작</a>
+<a href="#us-a08">A08 이용완료</a>
+<a href="#us-a09">A09 과거내역</a>
+<a href="#us-a10">A10 메뉴관리</a>
+<a href="#us-a11">A11 순서조정</a>
+</div>
+
+<div class="content">
+
+<!-- US-A01 -->
+<div class="screen" id="us-a01">
+<div class="screen-header"><span class="story-id">US-A01 Must</span><h2>관리자 로그인</h2><p>JWT 인증 · 16시간 세션</p></div>
+<div class="screen-body">
+<div class="login-form">
+<label>매장 식별자</label><input type="text" placeholder="STORE-001" value="STORE-001">
+<label>사용자명</label><input type="text" placeholder="admin" value="admin">
+<label>비밀번호</label><input type="password" value="••••••">
+<button class="btn btn-primary">로그인</button>
+<div class="feedback feedback-success" style="margin-top:12px">✅ 로그인 성공 · 세션 16시간 유지 · 새로고침 시에도 유지</div>
+<p style="text-align:center;font-size:11px;color:#999;margin-top:8px">⏰ 16시간 후 자동 로그아웃 · 로그인 시도 제한 적용</p>
+</div>
+</div>
+</div>
+
+<!-- US-A02 -->
+<div class="screen" id="us-a02">
+<div class="screen-header"><span class="story-id">US-A02 Must</span><h2>실시간 주문 모니터링</h2><p>SSE 기반 · 2초 이내 표시</p></div>
+<div class="screen-body">
+<div class="table-grid">
+<div class="table-card has-new"><span class="new-badge">🔔 NEW</span><div class="table-num">테이블 3</div><div class="table-total">총 23,000원</div><div class="table-orders"><div class="order-line">#42 김치찌개×2, 된장찌개×1 <button class="status-btn status-waiting">대기중</button></div><div class="order-line">#41 부대찌개×1 <button class="status-btn status-done">완료</button></div></div></div>
+<div class="table-card"><div class="table-num">테이블 5</div><div class="table-total">총 15,000원</div><div class="table-orders"><div class="order-line">#40 순두부찌개×1, 공기밥×2 <button class="status-btn status-preparing">준비중</button></div></div></div>
+<div class="table-card"><div class="table-num">테이블 7</div><div class="table-total">총 31,000원</div><div class="table-orders"><div class="order-line">#39 김치찌개×1 <button class="status-btn status-done">완료</button></div><div class="order-line">#38 부대찌개×1 <button class="status-btn status-done">완료</button></div></div></div>
+<div class="table-card" style="border:1px dashed #ddd;color:#aaa"><div class="table-num" style="color:#ccc">테이블 9</div><div style="font-size:12px;margin-top:8px">주문 없음</div></div>
+</div>
+<div class="modal"><h3>📋 주문 상세 (#42) - 테이블 3 클릭 시</h3><div class="detail-item">김치찌개 × 2 · 16,000원<div class="spicy">🌶️ 맵기: 매운맛</div><div class="note">📝 청양고추 빼주세요</div></div><div class="detail-item">된장찌개 × 1 · 7,000원</div></div>
+</div>
+</div>
+
+<!-- US-A03 -->
+<div class="screen" id="us-a03">
+<div class="screen-header"><span class="story-id">US-A03 Must</span><h2>주문 상태 변경</h2><p>대기중 → 준비중 → 완료</p></div>
+<div class="screen-body">
+<div style="padding:12px;border:1px solid #eee;border-radius:8px;margin-bottom:12px">
+<p style="font-size:14px;font-weight:600">#42 · 테이블 3</p>
+<p style="font-size:12px;color:#666;margin:4px 0">김치찌개×2, 된장찌개×1 (축약)</p>
+<div style="display:flex;gap:8px;margin-top:8px">
+<button class="btn-sm status-waiting" style="border:none;cursor:pointer">대기중</button>
+<span style="line-height:44px">→</span>
+<button class="btn-sm status-preparing" style="border:2px solid #004085;cursor:pointer">준비중 ✓</button>
+<span style="line-height:44px">→</span>
+<button class="btn-sm status-done" style="border:none;cursor:pointer">완료</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- US-A04 -->
+<div class="screen" id="us-a04">
+<div class="screen-header"><span class="story-id should">US-A04 Should</span><h2>테이블별 필터링</h2><p>특정 테이블 주문만 보기</p></div>
+<div class="screen-body">
+<div class="filter-bar"><label>테이블 필터:</label><select><option>전체 테이블</option><option selected>테이블 3</option><option>테이블 5</option><option>테이블 7</option></select><button class="btn-sm btn-secondary" style="border:1px solid #ddd">필터 해제</button></div>
+<div class="table-card" style="margin-bottom:12px"><div class="table-num">테이블 3</div><div class="table-total">총 23,000원</div><div class="table-orders"><div class="order-line">#42 김치찌개×2, 된장찌개×1 <button class="status-btn status-waiting">대기중</button></div><div class="order-line">#41 부대찌개×1 <button class="status-btn status-done">완료</button></div></div></div>
+<p style="font-size:12px;color:#999;text-align:center">필터 적용 중: 테이블 3만 표시</p>
+</div>
+</div>
+
+<!-- US-A05 -->
+<div class="screen" id="us-a05">
+<div class="screen-header"><span class="story-id">US-A05 Must</span><h2>테이블 태블릿 초기 설정</h2><p>번호 · 비밀번호 · 16시간 세션</p></div>
+<div class="screen-body">
+<div class="setup-form">
+<label>테이블 번호</label><input type="text" placeholder="예: 5" value="5">
+<label>테이블 비밀번호</label><input type="password" placeholder="비밀번호 설정" value="••••">
+<button class="btn btn-primary">설정 저장</button>
+<div class="feedback feedback-success">✅ 테이블 5 설정 완료 · 16시간 세션 생성 · 자동 로그인 활성화</div>
+</div>
+</div>
+</div>
+
+<!-- US-A06 -->
+<div class="screen" id="us-a06">
+<div class="screen-header"><span class="story-id">US-A06 Must</span><h2>주문 삭제</h2><p>확인 팝업 · 총액 재계산</p></div>
+<div class="screen-body">
+<div style="padding:10px;border:1px solid #eee;border-radius:8px;margin-bottom:12px"><span style="font-weight:600">#42</span> 김치찌개×2, 된장찌개×1 · 23,000원 <button class="btn-sm btn-danger" style="border:none;float:right">삭제</button></div>
+<div class="popup"><h3>⚠️ 주문 삭제 확인</h3><p>주문 #42를 삭제하시겠습니까?<br>이 작업은 되돌릴 수 없습니다.</p><div class="popup-actions"><button class="btn-sm btn-danger" style="border:none">삭제 확인</button><button class="btn-sm btn-secondary" style="border:1px solid #ddd">취소</button></div></div>
+<div class="feedback feedback-success">✅ 주문 #42 삭제 완료 · 테이블 3 총 주문액: 15,000원으로 재계산</div>
+<div class="feedback feedback-error" style="margin-top:4px">❌ 삭제 실패 시: 서버 오류 · 주문이 유지됩니다</div>
+</div>
+</div>
+
+<!-- US-A07 -->
+<div class="screen" id="us-a07">
+<div class="screen-header"><span class="story-id">US-A07 Must</span><h2>테이블 세션 시작</h2><p>첫 주문 시 자동 시작</p></div>
+<div class="screen-body">
+<div style="text-align:center;padding:20px">
+<div style="font-size:50px;margin-bottom:12px">🪑</div>
+<h3 style="font-size:16px">테이블 3 - 세션 없음</h3>
+<p style="font-size:13px;color:#666;margin-top:8px">현재 활성 세션이 없습니다</p>
+<div style="margin:20px 0;font-size:24px">⬇️</div>
+<div style="background:#d4edda;padding:12px;border-radius:8px">
+<p style="font-weight:600;color:#155724">🟢 새 세션 자동 시작!</p>
+<p style="font-size:12px;color:#155724;margin-top:4px">고객이 첫 주문(#43)을 생성 → 세션 ID: S-20260306-T3 자동 생성</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- US-A08 -->
+<div class="screen" id="us-a08">
+<div class="screen-header"><span class="story-id">US-A08 Must</span><h2>테이블 이용 완료</h2><p>세션 종료 · OrderHistory 이동</p></div>
+<div class="screen-body">
+<div class="table-card" style="margin-bottom:12px"><div class="table-num">테이블 3</div><div class="table-total">총 38,000원 (2건)</div><button class="btn-sm btn-warning" style="border:none;margin-top:8px">이용 완료</button></div>
+<div class="popup"><h3>🏁 이용 완료 확인</h3><p>테이블 3의 세션을 종료하시겠습니까?<br>주문 내역이 과거 이력으로 이동됩니다.</p><div class="popup-actions"><button class="btn-sm btn-warning" style="border:none">확인</button><button class="btn-sm btn-secondary" style="border:1px solid #ddd">취소</button></div></div>
+<div class="feedback feedback-success">✅ 테이블 3 이용 완료 · 2건 OrderHistory 이동 · 완료 시각: 13:45 · 주문 목록/총액 리셋</div>
+<div class="table-card" style="margin-top:12px;border:1px dashed #ddd;color:#aaa"><div class="table-num" style="color:#ccc">테이블 3</div><div style="font-size:12px;margin-top:4px">총 0원 · 새 고객 대기 중</div></div>
+</div>
+</div>
+
+<!-- US-A09 -->
+<div class="screen" id="us-a09">
+<div class="screen-header"><span class="story-id">US-A09 Must</span><h2>과거 주문 내역 조회</h2><p>테이블별 · 날짜 필터 · 닫기</p></div>
+<div class="screen-body">
+<div class="date-filter"><label>날짜:</label><input type="date" value="2026-03-06"> ~ <input type="date" value="2026-03-06"><button class="btn-sm btn-secondary" style="border:1px solid #ddd">조회</button></div>
+<div class="history-item"><div class="h-header"><span style="font-weight:600">#42 · 테이블 3</span><span class="h-time">12:35 → 이용완료 13:45</span></div><div>김치찌개×2, 된장찌개×1 · <b>23,000원</b></div></div>
+<div class="history-item"><div class="h-header"><span style="font-weight:600">#41 · 테이블 3</span><span class="h-time">12:20 → 이용완료 13:45</span></div><div>부대찌개×1 · <b>15,000원</b></div></div>
+<div class="history-item"><div class="h-header"><span style="font-weight:600">#38 · 테이블 5</span><span class="h-time">11:30 → 이용완료 12:15</span></div><div>순두부찌개×2 · <b>17,000원</b></div></div>
+<button class="btn btn-secondary">닫기 (대시보드로 복귀)</button>
+</div>
+</div>
+
+<!-- US-A10 -->
+<div class="screen" id="us-a10">
+<div class="screen-header"><span class="story-id could">US-A10 Could</span><h2>메뉴 관리</h2><p>CRUD · 맵기 수준/옵션 설정</p></div>
+<div class="screen-body">
+<div class="menu-form">
+<label>메뉴명 *</label><input type="text" value="김치찌개">
+<label>가격 *</label><input type="number" value="8000">
+<label>설명</label><textarea rows="2">돼지고기 김치찌개</textarea>
+<label>카테고리 *</label><select><option selected>찌개</option><option>볶음</option><option>구이</option><option>사이드</option><option>음료</option></select>
+<label>이미지 URL</label><input type="text" value="https://example.com/kimchi.jpg">
+<label>🌶️ 맵기 수준 (선택)</label><select><option>미설정</option><option>안매움</option><option>약간매움</option><option selected>매움</option><option>아주매움</option></select>
+<label>🌶️ 맵기 옵션 (고객 선택용, 선택)</label>
+<div style="margin-top:4px"><label style="display:inline;font-size:12px"><input type="checkbox" checked> 순한맛</label> <label style="display:inline;font-size:12px"><input type="checkbox" checked> 보통</label> <label style="display:inline;font-size:12px"><input type="checkbox" checked> 매운맛</label> <label style="display:inline;font-size:12px"><input type="checkbox" checked> 아주매운맛</label></div>
+<button class="btn btn-primary">저장</button>
+</div>
+<div class="feedback feedback-success" style="margin-top:8px">✅ 메뉴 저장 완료</div>
+<div class="feedback feedback-error" style="margin-top:4px">❌ 가격은 0원 이상이어야 합니다 (검증 에러 예시)</div>
+</div>
+</div>
+
+<!-- US-A11 -->
+<div class="screen" id="us-a11">
+<div class="screen-header"><span class="story-id could">US-A11 Could</span><h2>메뉴 노출 순서 조정</h2><p>드래그로 순서 변경</p></div>
+<div class="screen-body">
+<p style="font-size:13px;color:#666;margin-bottom:12px">카테고리: 찌개 · ☰ 드래그하여 순서 변경</p>
+<div class="menu-list-item"><span><span class="drag-handle">☰</span> 1. 김치찌개 · 8,000원</span></div>
+<div class="menu-list-item" style="border:2px dashed #0f3460;background:#f0f4ff"><span><span class="drag-handle">☰</span> 2. 순두부찌개 · 8,500원 <span style="font-size:11px;color:#0f3460">← 이동 중</span></span></div>
+<div class="menu-list-item"><span><span class="drag-handle">☰</span> 3. 된장찌개 · 7,000원</span></div>
+<div class="menu-list-item"><span><span class="drag-handle">☰</span> 4. 부대찌개 · 15,000원</span></div>
+<button class="btn btn-primary">순서 저장</button>
+</div>
+</div>
+
+</div>
+
+<script>
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');document.querySelectorAll('.story-nav a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}
+function onHash(){const id=location.hash.slice(1)||'us-a01';showScreen(id)}
+window.addEventListener('hashchange',onHash);
+window.addEventListener('load',onHash);
+</script>
+</body>
+</html>
