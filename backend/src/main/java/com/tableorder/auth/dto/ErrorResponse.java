@@ -1,0 +1,24 @@
+package com.tableorder.auth.dto;
+
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ErrorResponse {
+    private String error;
+    private String message;
+    private String timestamp;
+
+    public ErrorResponse() {}
+    public ErrorResponse(String error, String message) {
+        this.error = error;
+        this.message = message;
+        this.timestamp = OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+    }
+
+    public String getError() { return error; }
+    public void setError(String error) { this.error = error; }
+    public String getMessage() { return message; }
+    public void setMessage(String message) { this.message = message; }
+    public String getTimestamp() { return timestamp; }
+    public void setTimestamp(String timestamp) { this.timestamp = timestamp; }
+}

@@ -33,18 +33,36 @@
 - [x] Units Generation (COMPLETED)
 
 ### 🟢 CONSTRUCTION PHASE
-- [ ] Functional Design - EXECUTE (per-unit)
-- [ ] NFR Requirements - EXECUTE (per-unit)
-- [ ] NFR Design - EXECUTE (per-unit)
-- [ ] Infrastructure Design - EXECUTE (per-unit)
-- [ ] Code Generation - EXECUTE (per-unit)
-- [ ] Build and Test - EXECUTE
+
+#### Unit 1: DB/Common (unit-1-db-common)
+- [x] Functional Design (COMPLETED)
+- [x] NFR Requirements (COMPLETED)
+- [x] NFR Design (COMPLETED)
+- [x] Infrastructure Design (COMPLETED)
+- [x] Code Generation (COMPLETED)
+
+#### Unit 2: 인증 모듈 (unit-2-auth)
+- [x] Functional Design (COMPLETED)
+- [x] NFR Requirements (COMPLETED)
+- [x] NFR Design (COMPLETED)
+- [x] Infrastructure Design (COMPLETED)
+- [x] Code Generation - TDD (COMPLETED)
+  - [x] Plan Step 0: Unit 1 기존 코드 수정 + 프로젝트 구조 설정
+  - [x] Plan Step 1: JwtTokenProvider TDD (8 TC PASSED)
+  - [x] Plan Step 2: AuthService TDD (11 TC PASSED)
+  - [x] Plan Step 3: Security Filters TDD (5 TC PASSED)
+  - [x] Plan Step 4: AuthController TDD (8 TC PASSED)
+  - [x] Plan Step 5: Documentation + Final Verification
+  - Total: 32 TC ALL PASSED, Gradle BUILD SUCCESSFUL
+
+#### Build and Test
+- [x] Build and Test (COMPLETED)
 
 ### 🟡 OPERATIONS PHASE
 - [ ] Operations - PLACEHOLDER
 
 ## Current Status
-- **Lifecycle Phase**: INCEPTION
-- **Current Stage**: Workflow Planning Complete
-- **Next Stage**: Application Design
-- **Status**: Awaiting user approval of execution plan
+- **Lifecycle Phase**: CONSTRUCTION
+- **Current Stage**: Build and Test Complete
+- **Next Stage**: Operations (Placeholder)
+- **Status**: Unit 1, Unit 2 빌드 및 테스트 완료. Operations 단계 진행 대기

@@ -18,6 +18,9 @@ public class Admin {
     @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
+    @Column(name = "last_token_issued_at")
+    private LocalDateTime lastTokenIssuedAt;
+
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -31,4 +34,6 @@ public class Admin {
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getLastTokenIssuedAt() { return lastTokenIssuedAt; }
+    public void setLastTokenIssuedAt(LocalDateTime lastTokenIssuedAt) { this.lastTokenIssuedAt = lastTokenIssuedAt; }
 }

@@ -287,3 +287,93 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: 백엔드(우리) / 프론트엔드+Auth(다른팀) 분담으로 변경.
 
 ---
+
+## CONSTRUCTION - Unit 2 Infrastructure Design (Approval)
+**Timestamp**: 2026-03-06T15:00:00+09:00
+**User Input**: "이어서 계속해줘"
+**AI Response**: Infrastructure Design 승인 확인. Code Generation 단계로 진행.
+**Context**: Infrastructure Design approved. Proceeding to Code Generation.
+
+---
+## CONSTRUCTION - Unit 2 API Specification (Ad-hoc)
+**Timestamp**: 2026-03-06T15:00:00+09:00
+**User Input**: "인증모듈에 대한 API규격서 MD파일로 만들어서 다시 PUSH 해줘"
+**AI Response**: api-specification.md 생성, git commit & push 완료.
+**Context**: Ad-hoc request - API specification document created and pushed to remote.
+
+---
+
+## CONSTRUCTION - Unit 2 Code Generation (TDD Selection)
+**Timestamp**: 2026-03-06T15:05:00+09:00
+**AI Response**: TDD 선택 질문 제시. 사용자 답변 대기 중.
+**Context**: Code Generation Step 0 - TDD Selection prompt presented.
+
+---
+
+## CONSTRUCTION - Unit 2 Code Generation (TDD Selection Answer)
+**Timestamp**: 2026-03-06T15:10:00+09:00
+**User Input**: "코드 생성 방식은 B로해줘"
+**AI Response**: Standard 방식 선택 확인. Code Generation Plan 생성 진행.
+**Context**: Code Generation - Standard approach selected. User also requested to exclude duplicate work already done in Unit 1 (schema, build.gradle, etc.)
+
+---
+
+## CONSTRUCTION - Unit 2 Code Generation (TDD Selection Change)
+**Timestamp**: 2026-03-06T15:15:00+09:00
+**User Input**: "생각이 바뀌었어코드 생성 방식는 TDD방식으로 해줘"
+**AI Response**: TDD 방식으로 변경 확인. TDD Planning (Part 1) 시작.
+**Context**: Code Generation approach changed from Standard (B) to TDD (A). User also requested excluding duplicate work from Unit 1.
+
+---
+
+## CONSTRUCTION - Unit 2 TDD Code Generation (Planning Complete)
+**Timestamp**: 2026-03-06T15:20:00+09:00
+**AI Response**: TDD Planning Part 1 완료. 3개 문서 생성: (1) unit-2-auth-contracts.md (Contract/Interface 정의), (2) unit-2-auth-test-plan.md (32개 테스트 케이스), (3) unit-2-auth-tdd-code-generation-plan.md (5개 Plan Step). 사용자 승인 대기 중.
+**Context**: TDD Planning Part 1 complete. Awaiting user approval of 3 plan files.
+
+---
+
+## CONSTRUCTION - Unit 2 TDD Code Generation (Plan Approval)
+**Timestamp**: 2026-03-06T15:25:00+09:00
+**User Input**: "계속해줘"
+**AI Response**: TDD Plan 승인 확인. Part 2 Generation 시작. Plan Step 0부터 실행.
+**Context**: TDD Planning approved. Proceeding to TDD Generation Part 2.
+
+---
+
+## CONSTRUCTION - Unit 2 TDD Code Generation (Step 0-3 Complete)
+**Timestamp**: 2026-03-06T15:30:00+09:00
+**AI Response**: Plan Step 0~3 완료. Step 0: Unit 1 코드 수정 + DTO/Repository/Exception 생성. Step 1: JwtTokenProvider TDD (8 TC PASSED). Step 2: AuthService TDD (11 TC PASSED). Step 3: Security Filters TDD (5 TC PASSED - JwtAuthenticationFilter, StoreAccessFilter, CustomAuthenticationEntryPoint, CustomAccessDeniedHandler, SecurityConfig).
+**Context**: TDD Generation Steps 0-3 complete. 24 tests passing.
+
+---
+
+## CONSTRUCTION - Unit 2 TDD Code Generation (schema.sql 제외 요청)
+**Timestamp**: 2026-03-06T15:35:00+09:00
+**User Input**: "schema.sql은 유닛1에서 수정하고있으니 커밋하지마"
+**AI Response**: schema.sql 커밋 제외 확인.
+**Context**: User instruction - do not commit schema.sql changes.
+
+---
+
+## CONSTRUCTION - Unit 2 TDD Code Generation (Step 4 Complete)
+**Timestamp**: 2026-03-06T16:00:00+09:00
+**AI Response**: Plan Step 4 완료. AuthController TDD (8 TC PASSED - TC-AUTH-020~027). GlobalExceptionHandler 생성 완료. 생성 파일: AuthController.java (4개 엔드포인트), GlobalExceptionHandler.java (4개 예외 핸들러), AuthControllerTest.java (8개 테스트). 전체 테스트 실행: BUILD SUCCESSFUL, 모든 TC 통과.
+**Context**: TDD Generation Step 4 complete. AuthController + GlobalExceptionHandler implemented.
+
+---
+
+## CONSTRUCTION - Unit 2 TDD Code Generation (Step 5 Complete)
+**Timestamp**: 2026-03-06T16:05:00+09:00
+**AI Response**: Plan Step 5 완료. 전체 테스트 32개 모두 통과 확인. Gradle build SUCCESS. code-summary.md 생성 완료. aidlc-state.md 업데이트 완료. TDD Code Generation Plan 전체 체크리스트 완료.
+**Context**: TDD Generation Step 5 complete. All documentation updated. Unit 2 Code Generation fully complete.
+
+---
+
+## CONSTRUCTION - Build and Test (User Approval)
+**Timestamp**: 2026-03-06T16:15:00+09:00
+**User Input**: "진행해"
+**AI Response**: Build and Test 단계 실행. 6개 문서 생성 완료: build-instructions.md, unit-test-instructions.md, integration-test-instructions.md, performance-test-instructions.md, security-test-instructions.md, build-and-test-summary.md. aidlc-state.md 업데이트 완료.
+**Context**: Build and Test stage completed. All instruction documents generated.
+
+---

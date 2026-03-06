@@ -15,3 +15,6 @@ app:
   jwt:
     secret: ${JWT_SECRET:my-super-secret-key-for-jwt-signing-at-least-256-bits-long!!}
     expiration-ms: 57600000  # 16 hours
+    refresh-threshold-ms: 28800000  # 8 hours
+  cors:
+    allowed-origins: ${CORS_ORIGINS:*}
