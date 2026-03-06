@@ -466,6 +466,22 @@ AI-DLC 워크플로우를 시작해봅시다."
 
 ---
 
+## CONSTRUCTION - Unit 3 Code Generation (Approval)
+**Timestamp**: 2026-03-06T16:57:45+09:00
+**User Input**: "다음 스텝으로 넘어갈게"
+**AI Response**: Unit 3 Code Generation 승인 확인. Unit 5 (Admin BE) Functional Design 시작.
+**Context**: Unit 3 complete. Proceeding to Unit 5.
+
+---
+
+## CONSTRUCTION - Unit 5 Functional Design (Plan Created)
+**Timestamp**: 2026-03-06T16:57:45+09:00
+**User Input**: "다음 스텝으로 넘어갈게" (Unit 3 승인 + Unit 5 시작)
+**AI Response**: Unit 5 Functional Design Plan 생성. 8개 질문 포함.
+**Context**: Unit 5 (Admin BE) Functional Design 시작.
+
+---
+
 ## CONSTRUCTION - Unit 4 Functional Design (Answers & Artifacts)
 **Timestamp**: 2026-03-06T17:00:00+09:00
 **User Input**: "ㄱ / 아냐... 답변했어... 그거 봐줘..." (플랜 파일에 직접 답변 작성)
@@ -478,19 +494,23 @@ AI-DLC 워크플로우를 시작해봅시다."
 - Q6: 추천해줘 → AI 추천 B (Bootstrap 5 CDN)
 - Q7: B (반응형)
 - Q8: A (공통 fetch wrapper)
-**AI Response**: 답변 분석 완료. 모호한 답변 없음. Functional Design 산출물 4개 생성:
-- frontend-components.md (5개 화면 + 공통 컴포넌트 + SPA 라우터)
-- domain-entities.md (localStorage 구조 + 8개 클라이언트 엔티티)
-- business-rules.md (6개 카테고리 25개 규칙)
-- business-logic-model.md (9개 흐름도 + API 연동 매핑)
+**AI Response**: 답변 분석 완료. Functional Design 산출물 4개 생성.
 **Context**: Unit 4 Functional Design 산출물 생성 완료.
+
+---
+
+## CONSTRUCTION - Unit 5 Functional Design (Answers & Artifacts)
+**Timestamp**: 2026-03-06T17:04:16+09:00
+**User Input**: "작성완료했어"
+**AI Response**: 8개 답변 확정 — Q1:A(단일 대시보드 API), Q2:B(SSE 5개 상세), Q3:A(Hard Delete), Q4:A(전체 스냅샷+원본 삭제), Q5:A(테이블별 이력), Q6:C(메뉴 CRUD만), Q7:A(PIN 변경만), Q8:A(단방향 상태변경). Functional Design 산출물 3개 생성.
+**Context**: Unit 5 Functional Design 완료.
 
 ---
 
 ## CONSTRUCTION - Unit 4 Functional Design (Approval)
 **Timestamp**: 2026-03-06T17:05:00+09:00
 **User Input**: "진행시켜"
-**AI Response**: Functional Design 승인 확인. NFR Requirements 단계 시작. 플랜 파일 생성 (4개 질문: 배포 방식, 브라우저 호환성, 네트워크 대응, 접근성).
+**AI Response**: Functional Design 승인 확인. NFR Requirements 단계 시작.
 **Context**: Unit 4 Functional Design 승인 → NFR Requirements 시작.
 
 ---
@@ -498,63 +518,62 @@ AI-DLC 워크플로우를 시작해봅시다."
 ## CONSTRUCTION - Unit 4 NFR Requirements (Answers & Artifacts)
 **Timestamp**: 2026-03-06T17:10:00+09:00
 **User Input**: "답변했어~"
-**User Answers**:
-- Q1: A (Spring Boot static/ 배포)
-- Q2: C (모든 최신 브라우저)
-- Q3: A (기본 에러 메시지)
-- Q4: A (기본 접근성)
-**AI Response**: 답변 분석 완료. NFR Requirements 산출물 2개 생성: nfr-requirements.md (6개 카테고리: 성능/가용성/보안/호환성/접근성/유지보수성), tech-stack-decisions.md (Vanilla JS + Bootstrap 5 CDN + Spring Boot static/ 배포).
+**AI Response**: NFR Requirements 산출물 2개 생성.
 **Context**: Unit 4 NFR Requirements 산출물 생성 완료.
+
+---
+
+## CONSTRUCTION - Unit 5 Functional Design (Approval) → NFR → Infrastructure
+**Timestamp**: 2026-03-06T17:10:38+09:00
+**User Input**: "다음단계로"
+**AI Response**: Unit 5 Functional Design 승인. NFR Requirements, NFR Design, Infrastructure Design 산출물 일괄 생성.
+**Context**: Unit 5 설계 완료.
+
+---
+
+## CONSTRUCTION - Unit 5 API Specification (Ad-hoc)
+**Timestamp**: 2026-03-06T17:12:47+09:00
+**User Input**: "api spec을 만들어줘"
+**AI Response**: Unit 5 API 규격서 생성. 11개 API 엔드포인트 상세 명세.
+**Context**: Ad-hoc request - Unit 5 API specification document created.
 
 ---
 
 ## CONSTRUCTION - Unit 4 NFR Requirements (Approval) → NFR Design
 **Timestamp**: 2026-03-06T17:15:00+09:00
 **User Input**: "진행시켜"
-**AI Response**: NFR Requirements 승인. NFR Design 진행. Frontend 특성상 질문 없이 산출물 직접 생성: nfr-design-patterns.md (6개 패턴: Fetch Wrapper, localStorage Wrapper, Hash Router, Safe Rendering, Intersection Observer, Bootstrap Grid), logical-components.md (7개 JS 모듈 + 의존 관계).
-**Context**: Unit 4 NFR Design 산출물 생성 완료.
+**AI Response**: NFR Requirements 승인. NFR Design 산출물 생성.
+**Context**: Unit 4 NFR Design 완료.
 
 ---
 
 ## CONSTRUCTION - Unit 4 NFR Design (Approval) → Infrastructure Design
 **Timestamp**: 2026-03-06T17:20:00+09:00
 **User Input**: "진행시켜"
-**AI Response**: NFR Design 승인. Infrastructure Design 진행. Frontend 정적 파일은 Spring Boot static/ 배포로 인프라 변경 없음. infrastructure-design.md 생성 (배포 구조, 개발 워크플로우, Security permitAll 설정 필요).
-**Context**: Unit 4 Infrastructure Design 산출물 생성 완료.
+**AI Response**: NFR Design 승인. Infrastructure Design 산출물 생성.
+**Context**: Unit 4 Infrastructure Design 완료.
 
 ---
 
 ## CONSTRUCTION - Unit 4 Infrastructure Design (Approval) → Code Generation TDD
 **Timestamp**: 2026-03-06T17:25:00+09:00
 **User Input**: "진행시켜" → TDD 선택: "A"
-**AI Response**: Infrastructure Design 승인. Code Generation TDD 선택. TDD Planning 3개 파일 생성:
-- unit-4-customer-fe-contracts.md (6개 모듈: ApiClient, Auth, Cart, MenuView, OrderView, OrderHistoryView)
-- unit-4-customer-fe-test-plan.md (20 TC: Cart 9, API 4, Auth 4, StatusBadge 3)
-- unit-4-customer-fe-tdd-code-generation-plan.md (5 Plan Steps: Skeleton → Cart TDD → API+Auth TDD → UI 구현 → 통합+문서화)
-**Context**: Unit 4 TDD Code Generation Planning 완료. 사용자 승인 대기.
+**AI Response**: TDD Planning 3개 파일 생성 (20 TC, 5 Plan Steps).
+**Context**: Unit 4 TDD Code Generation Planning 완료.
 
 ---
 
 ## CONSTRUCTION - Unit 4 TDD Code Generation (Plan Approval + Steps 0-3)
 **Timestamp**: 2026-03-06T17:30:00+09:00
 **User Input**: "승인합니다~"
-**AI Response**: TDD Plan 승인. Plan Step 0~3 순차 실행:
-- Step 0: 프로젝트 Skeleton 생성 (index.html, style.css, 7 JS 모듈, test-utils.js, run-tests.html, 4 test 파일)
-- Step 1: Cart TDD (9 TC - TC-FE-001~009 ALL PASSED)
-- Step 2: API + Auth TDD (8 TC - TC-FE-010~017 ALL PASSED)
-- Step 3: UI 모듈 구현 (OrderHistoryView TDD 3 TC - TC-FE-018~020 PASSED, MenuView/OrderView/OrderHistoryView/App 전체 구현)
-**Context**: Plan Steps 0-3 완료. 20 TC 작성, 7 JS 모듈 완전 구현.
+**AI Response**: Plan Step 0~3 실행. 20 TC ALL PASSED, 7 JS 모듈 구현.
+**Context**: Plan Steps 0-3 완료.
 
 ---
 
 ## CONSTRUCTION - Unit 4 TDD Code Generation (Step 4 - 통합 + Security + 문서화)
 **Timestamp**: 2026-03-06T17:55:00+09:00
-**AI Response**: Plan Step 4 실행:
-- SecurityConfig.java에 `.requestMatchers("/customer/**").permitAll()` 추가
-- frontend/customer/ → backend/src/main/resources/static/customer/ 배포 파일 복사 (tests 제외)
-- code-summary.md 생성 (7 모듈 요약, API 연동 목록, TDD 결과)
-- aidlc-state.md 업데이트 (Unit 4 Code Generation TDD COMPLETED)
-- 테스트: 브라우저 기반 (frontend/customer/tests/run-tests.html) - 수동 확인 필요
-**Context**: Unit 4 TDD Code Generation 전체 완료. REVIEW REQUIRED.
+**AI Response**: Plan Step 4 실행. SecurityConfig 수정, static/ 배포, code-summary.md 생성.
+**Context**: Unit 4 TDD Code Generation 전체 완료.
 
 ---
