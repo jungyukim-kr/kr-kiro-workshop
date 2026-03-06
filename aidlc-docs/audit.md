@@ -418,3 +418,11 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Build and Test stage completed. All instruction documents generated.
 
 ---
+
+## CONSTRUCTION - Unit 3 API Specification (Ad-hoc)
+**Timestamp**: 2026-03-06T16:03:45+09:00
+**User Input**: "아니, API 명세 먼저 만들어줘."
+**AI Response**: Unit 2 API 규격서와 동일한 형식으로 Unit 3 API 규격서 생성. 5개 API 엔드포인트, 에러 코드, JWT 클레임 참조, SSE 연계 정보 포함.
+**Context**: Ad-hoc request - Unit 3 API specification document created before Code Generation.
+
+---
