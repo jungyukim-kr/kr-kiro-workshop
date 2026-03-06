@@ -206,3 +206,51 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Functional Design change request applied. Account locking feature removed entirely.
 
 ---
+## CONSTRUCTION - Unit 2 Functional Design (Approval)
+**Timestamp**: 2026-03-06T14:15:00+09:00
+**User Input**: "진행해줘"
+**AI Response**: Unit 2 Functional Design 승인 확인. NFR Requirements 단계로 진행.
+**Context**: Functional Design approved. Proceeding to NFR Requirements.
+
+---
+## CONSTRUCTION - Unit 2 NFR Requirements (Plan Created)
+**Timestamp**: 2026-03-06T14:17:00+09:00
+**AI Response**: Unit 2 NFR Requirements Plan 생성 완료. 7개 질문 포함. 사용자 답변 대기 중.
+**Context**: NFR Requirements Plan created at aidlc-docs/construction/plans/unit-2-auth-nfr-requirements-plan.md
+
+---
+## CONSTRUCTION - Unit 2 NFR Requirements (Answers & Artifacts)
+**Timestamp**: 2026-03-06T14:22:00+09:00
+**User Input**: "다했음"
+**AI Response**: 7개 답변 분석 완료. 모순/모호성 없음. NFR Requirements 산출물 2개 생성: nfr-requirements.md (성능/보안/가용성/로깅/에러 응답 5개 카테고리), tech-stack-decisions.md (jjwt, Spring Security 6.x, BCryptPasswordEncoder, SLF4J+Logback, CORS 프로필별 설정). Plan 체크리스트 전체 완료.
+**Context**: NFR Requirements artifacts generated. Awaiting user approval.
+
+---
+## CONSTRUCTION - Unit 2 NFR Requirements (Approval)
+**Timestamp**: 2026-03-06T14:28:00+09:00
+**User Input**: "계속 해줘"
+**AI Response**: NFR Requirements 승인 확인. NFR Design 단계로 진행.
+**Context**: NFR Requirements approved. Proceeding to NFR Design.
+
+---
+## CONSTRUCTION - Unit 2 NFR Design (Answers & Artifacts)
+**Timestamp**: 2026-03-06T14:35:00+09:00
+**User Input**: "했어" → Q1:A(서버 재시작 시 새 키), Q2:B(Timing Attack 방어 불필요), Q3:"추천해줘" → AI 추천 A(DB last_token_issued_at) → "그래"
+**AI Response**: 3개 답변 분석 완료. NFR Design 산출물 2개 생성: nfr-design-patterns.md (6개 패턴: Stateless JWT, Security Filter Chain, RBAC, 단일 세션, Sliding Window 갱신, 통합 에러 처리), logical-components.md (9개 컴포넌트: AuthController, AuthService, SecurityConfig, JwtTokenProvider, JwtAuthenticationFilter, StoreAccessFilter, EntryPoint, AccessDeniedHandler, GlobalExceptionHandler). Plan 체크리스트 전체 완료.
+**Context**: NFR Design artifacts generated. Awaiting user approval.
+
+---
+## CONSTRUCTION - Unit 2 NFR Design (Approval)
+**Timestamp**: 2026-03-06T14:40:00+09:00
+**User Input**: "ㅇㅋ"
+**AI Response**: NFR Design 승인 확인. Infrastructure Design 단계로 진행.
+**Context**: NFR Design approved. Proceeding to Infrastructure Design.
+
+---
+## CONSTRUCTION - Unit 2 Infrastructure Design (Answers & Artifacts)
+**Timestamp**: 2026-03-06T14:45:00+09:00
+**User Input**: "했어" → Q1:A(docker-compose.yml에 직접 설정), Q2:A(application.yml + application-prod.yml)
+**AI Response**: 2개 답변 분석 완료. 모순 없음. Infrastructure Design 산출물 2개 생성: infrastructure-design.md (배포 구조, JWT Secret 관리, 프로필 관리, Security 설정, DB 변경사항, Gradle 의존성), deployment-architecture.md (배포 다이어그램, 인증 요청 흐름 3가지, 환경변수 목록). Plan 체크리스트 전체 완료.
+**Context**: Infrastructure Design artifacts generated. Awaiting user approval.
+
+---
