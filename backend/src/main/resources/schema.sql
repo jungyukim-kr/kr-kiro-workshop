@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS admin (
     store_id BIGINT NOT NULL REFERENCES store(id),
     username VARCHAR(50) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
+    last_token_issued_at TIMESTAMP,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     UNIQUE(store_id, username)
 );

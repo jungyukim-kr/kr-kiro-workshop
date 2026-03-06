@@ -287,7 +287,6 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: 백엔드(우리) / 프론트엔드+Auth(다른팀) 분담으로 변경.
 
 ---
-
 ## CONSTRUCTION - Unit 2 Infrastructure Design (Approval)
 **Timestamp**: 2026-03-06T15:00:00+09:00
 **User Input**: "이어서 계속해줘"
@@ -325,6 +324,13 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: Code Generation approach changed from Standard (B) to TDD (A). User also requested excluding duplicate work from Unit 1.
 
 ---
+## CONSTRUCTION - Unit 3 Functional Design (Plan Created)
+**Timestamp**: 2026-03-06T15:15:53Z
+**User Input**: "고고" (Unit 3 시작)
+**AI Response**: Unit 3 Functional Design Plan 생성. 8개 질문 포함: 메뉴 조회 구조, 맵기 옵션 포함 방식, 세션 자동 생성, 주문번호 형식, 조회 범위, 페이지네이션, 가격 검증, 옵션 검증.
+**Context**: Unit 3 (Customer BE) Functional Design 시작. 사용자 답변 대기 중.
+
+---
 
 ## CONSTRUCTION - Unit 2 TDD Code Generation (Planning Complete)
 **Timestamp**: 2026-03-06T15:20:00+09:00
@@ -347,12 +353,47 @@ AI-DLC 워크플로우를 시작해봅시다."
 **Context**: TDD Generation Steps 0-3 complete. 24 tests passing.
 
 ---
+## CONSTRUCTION - Unit 3 Functional Design (Answers & Artifacts)
+**Timestamp**: 2026-03-06T15:34:22Z
+**User Input**: "Q3: 네 추천을 수용할게. //// Q4: 일자+일련번호(B) /// Q7: 그럼 B로 하고, 관리자가 알 수 있도록 하는 서비스와 연계되어야겠어."
+**AI Response**: 8개 답변 확정 — Q1:B(분리API), Q2:B(별도API), Q3:A개선(sessionId null일때만 생성), Q4:B(yyyyMMdd-순번), Q5:A(빈목록), Q6:A(오프셋), Q7:B(가격불일치 에러+관리자 SSE 연계), Q8:A(에러반환). Functional Design 산출물 3개 생성: domain-entities.md, business-logic-model.md (5개 API 플로우), business-rules.md (4개 규칙 카테고리).
+**Context**: Unit 3 Functional Design 완료. 사용자 승인 대기 중.
+
+---
 
 ## CONSTRUCTION - Unit 2 TDD Code Generation (schema.sql 제외 요청)
 **Timestamp**: 2026-03-06T15:35:00+09:00
 **User Input**: "schema.sql은 유닛1에서 수정하고있으니 커밋하지마"
 **AI Response**: schema.sql 커밋 제외 확인.
 **Context**: User instruction - do not commit schema.sql changes.
+
+---
+## CONSTRUCTION - Unit 3 Functional Design (Approval) → NFR Requirements
+**Timestamp**: 2026-03-06T15:42:27Z
+**User Input**: "기능 요구사항은 검토 완료했어. 비기능 요구사항 검토하자."
+**AI Response**: Unit 3 Functional Design 승인. NFR Requirements Plan 생성. 4개 질문: 응답 시간 목표, 동시 주문 처리, 트랜잭션 롤백 범위, SSE 실패 처리.
+**Context**: Unit 3 NFR Requirements 시작. 사용자 답변 대기 중.
+
+---
+## CONSTRUCTION - Unit 3 NFR Requirements (Answers & Artifacts)
+**Timestamp**: 2026-03-06T15:48:26Z
+**User Input**: "응!"
+**AI Response**: Q2 낙관적 재시도 방식 확정. NFR Requirements 산출물 생성: nfr-requirements.md, tech-stack-decisions.md. Q1:A(1초이내), Q2:낙관적재시도(UNIQUE+retry), Q3:A(전체롤백), Q4:A(주문유지+관리자refresh). Unit 6 전달사항: SSE 누락 대비 주기적 polling 필요.
+**Context**: Unit 3 NFR Requirements 완료.
+
+---
+## CONSTRUCTION - Unit 3 NFR Requirements (Approval) → NFR Design
+**Timestamp**: 2026-03-06T15:51:06Z
+**User Input**: "확인했어."
+**AI Response**: NFR Requirements 승인. NFR Design 산출물 생성: nfr-design-patterns.md (5개 패턴: 낙관적 재시도, 트랜잭션 원자성, SSE Fire-and-Forget, 계층 분리, 통합 에러 처리), logical-components.md (5개 컴포넌트, Unit 간 의존성).
+**Context**: Unit 3 NFR Design 완료.
+
+---
+## CONSTRUCTION - Unit 3 NFR Design (Approval) → Infrastructure Design
+**Timestamp**: 2026-03-06T15:55:14Z
+**User Input**: "확인했어!"
+**AI Response**: NFR Design 승인. Infrastructure Design 산출물 생성. 인프라 변경사항 없음 — Unit 1 기존 Docker Compose 인프라 그대로 활용.
+**Context**: Unit 3 Infrastructure Design 완료.
 
 ---
 

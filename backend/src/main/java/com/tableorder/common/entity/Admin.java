@@ -32,6 +32,8 @@ public class Admin {
     public void setUsername(String username) { this.username = username; }
     public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public LocalDateTime getLastTokenIssuedAt() { return lastTokenIssuedAt; }
+    public void setLastTokenIssuedAt(LocalDateTime lastTokenIssuedAt) { this.lastTokenIssuedAt = lastTokenIssuedAt; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     public LocalDateTime getLastTokenIssuedAt() { return lastTokenIssuedAt; }
